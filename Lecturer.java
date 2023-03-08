@@ -1,12 +1,11 @@
 import java.util.Scanner;
 
-public class Lecturer{
-    private Name name;
-    private String officeAddr;
-    private String officeNum;
-    private String phoneNum;
-    private String email;
-
+public class Lecturer extends Person {
+    
+    private Office office;
+    private ArrayList<Session> session;
+    
+   
     public void setName(Name name) {
         this.name = name;
     }
