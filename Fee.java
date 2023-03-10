@@ -1,12 +1,11 @@
-public class fee{
+public class Fee{
     
-
     //attribute
     private float amount;
     private float paid;
   
 
-        //constructor
+    //constructor
     public Course(float amount, float paid) {
         this.amount = amount;
         this.paid = paid; 
@@ -28,10 +27,7 @@ public class fee{
     }
     
     public float printInvoice(float amount, float paid){
-        
-        return amount;
-        return paid
-        
+        return amount - paid;
     }
 
     

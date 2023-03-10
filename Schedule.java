@@ -20,3 +20,5 @@ public class Schedule {
   //method
   public void viewSchedule(Session session[]) {
   }
+
+}
