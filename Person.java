@@ -2,7 +2,7 @@
 public class Person {
 
     protected String name;
-    protected String id;
+    protected String id; //it is imperative that student id is the index where the person is located
     protected int age;
     protected String ic;
     protected String department;
