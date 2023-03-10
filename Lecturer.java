@@ -28,7 +28,7 @@ public class Lecturer extends Person {
     public void setEmail(String email) {
         this.email = email;
     }
-
+L
     public void createLecturer() {
         System.out.println("----------Lecturer's Details----------");
         Lecturer lec = new Lecturer();
