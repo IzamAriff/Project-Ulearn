@@ -1,5 +1,5 @@
 import java.util.Scanner;
-O
+Oop
 public class Lecturer extends Person {
     
     private Office office;
