@@ -17,13 +17,10 @@ public class Lecturer extends Person {
         this.officeAddr = officeAddr;
     }
 
-    public void setOfficeNum(String officeNum) {
-        this.officeNum = officeNum;
-    }
-
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
+
 
     public void setEmail(String email) {
         this.email = email;
