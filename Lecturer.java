@@ -4,28 +4,42 @@ public class Lecturer extends Person {
     
     private Office office;
     private ArrayList<Session> session;
+    private String phoneNum;
     
-   
-    public void setName(Name name) {
-        this.name = name;
-    }
-    public Name getName(){
-        return name;
-    }
-
-    public void setOfficeAddr(String officeAddr) {
-        this.officeAddr = officeAddr;
+    //constructor: assigning values to attributes
+    public Lecturer(String name, String id, int age, String ic, String department,
+                                        Office office, ArrayList<Session> session) {
+        
+        // call the constructor of the Person class using 'super'
+        super(name, id, age, ic, department); 
+        this.office = office;
+        this.session = session;
     }
 
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
-
-
-    public void setEmail(String email) {
-        this.email = email;
+    
+    public String getPhoneNum() {
+        return phoneNum;
     }
-
+    
+    public void setOffice(Office office) {
+        this.office = office;
+    }
+    
+    public Office getOffice() {
+        return office;
+    }
+    
+    public void setSession(ArrayList<Session> session) {
+        this.session = session;
+    }
+    
+    public ArrayList<Session> getSession() {
+        return session;
+    }
+    
     public void createLecturer() {
         System.out.println("----------Lecturer's Details----------");
         Lecturer lec = new Lecturer();
