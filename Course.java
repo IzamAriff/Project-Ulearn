@@ -1,12 +1,13 @@
 public class Course {
 
+    //attribute
     private String name;
     private String courseID;
-    private lecturer Lecturer;
+    private Lecturer lecturer; //name, office, phoneNum
     private int creditHour;
     private String description;
 
-
+    //constructor
     public Course(String name, String CourseID, lecturer Lecturer, int creditHour, String description) {
         this.courseID = courseID;
         this.creditHour = creditHour;
@@ -14,6 +15,7 @@ public class Course {
         this.description = description;
         this.Lecturer = Lecturer;
     }
+    
     public String getName() {
         return name;
     }
@@ -46,11 +48,11 @@ public class Course {
         this.description = description;
     }
 
-    public getLectureCourse(String name, String courseID, String description) {
+    public void getLectureCourse(String name, String courseID, String description) { //courseID is just using the index of the array 
 
     }
 
-    public getStudentCourse(String name, String CourseID, Lecturer lecturer, String creditHour, String description) {
+    public void getStudentCourse(String name, String courseID, Lecturer lecturer, String creditHour, String description) {
 
     }
 }
