@@ -6,14 +6,15 @@ public class Person {
     protected int age;
     protected String ic;
     protected String department;
+    protected String email;
 
-
-    public Person(String name, String id, int age, String ic, String department) {
+    public Person(String name, String id, int age, String ic, String department, String email) {
         this.name = name;
         this.id = id;
         this.age = age;
         this.ic = ic;
         this.department = department;
+        this.email = email;
     }
 
     public String getName() {
@@ -54,5 +55,13 @@ public class Person {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
