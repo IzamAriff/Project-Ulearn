@@ -2,55 +2,35 @@ public class Student extends Person {
     
     //attributes
     private String programme;
-    private course[] = Course;
-    private fee Fee;
-    private semester Semester;
+    private Course[] course;
+    private Fee fee;
+    private Semester semester;
     
     //constructor: assigning values to attributes
-    public Student(String name, String id, int age, String ic, String department,
-                   Course[] courses, String programme, Fee fee, Semester semester) {
+    public Student(String name, String id, int age, String ic, String department, String email,
+                                Course[] courses, String programme, Fee fee, Semester semester) {
         
         // call the constructor of the Person class using 'super'
-        super(name, id, age, ic, department); 
+        super(name, id, age, ic, department, email); 
         this.courses = courses;
         this.programme = programme;
         this.fee = fee;
         this.semester = semester;
     }
-    
-    public addCourse(couse Course) {
-        return course;
-    }
-    public dropCourse(course Course){
-        return course;
+
+    public void setCourse(Course[] course) {
+        this.course = course;
     }
 
-    void getCourse() {
-        return 0;
-    }
-
-    void getProgramme() {
-        return 0;
+    public Course[] getCourse() {
+        return course;
     }
 
     public void setProgramme(String programe) {
         this.programme = programme;
     }
-       
-    void getCourse() {
-        return 0;
+    
+    public String getProgramme() {
+        return programme;
     }
-    
-    public void setFee(fee Fee) {
-        this.fee = fee;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
