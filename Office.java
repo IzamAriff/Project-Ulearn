@@ -1,5 +1,14 @@
-public class office {
-    private String block, level, room;
+public class Office {
+    
+    private String block; 
+    private String level;
+    private String room;
+    
+    public Office(String block, String level, String room) {
+        this.block;
+        this.level;
+        this.room;
+    }
 
     public String getBlock() {
         return block;
