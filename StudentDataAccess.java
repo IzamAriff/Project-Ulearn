@@ -11,6 +11,9 @@ public class StudentDataAccess {
     public StudentDataAccess(Connection connection) {
         this.connection = connection;
     }
+    
+    public StudentDataAccess() { //data access object
+    }
 
     public void addStudent(Student student) throws SQLException {
 
