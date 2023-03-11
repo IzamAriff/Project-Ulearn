@@ -8,11 +8,8 @@ public class StudentDataAccess {
 
     private Connection connection;
 
-    public StudentDAO(Connection connection) {
+    public StudentDataAccess(Connection connection) {
         this.connection = connection;
-    }
-
-    public StudentDAO() { //data access object
     }
 
     public void addStudent(Student student) throws SQLException {
