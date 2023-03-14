@@ -2,6 +2,7 @@ package com.ulearn.main;
 
 public class Course {
 
+//izam hensem memek
     //attribute
     private String name;
     private String courseID;
