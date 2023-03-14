@@ -1,5 +1,7 @@
 public class Course {
 
+
+// azam nk attack izam
     //attribute
     private String name;
     private String courseID;
