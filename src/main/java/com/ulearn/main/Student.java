@@ -1,5 +1,4 @@
 package com.ulearn.main;
-
 import com.ulearn.utility.Semester;
 
 public class Student extends Person {

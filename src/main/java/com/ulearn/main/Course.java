@@ -1,30 +1,39 @@
 package com.ulearn.main;
 
-public class Course {
+public abstract class Course {
 
 //izam hensem memek
     //attribute
-    private String name;
-    private String courseID;
-    private Lecturer lecturer; //name, office, phoneNum
-    private int creditHour;
-    private String description;
+    protected String courseName;
+    protected String courseID;
+    protected Lecturer lecturer; //courseName, office, phoneNum
+    protected boolean freeTrialAvailable;
+    protected double courseFee;
+    protected String feedback;
+    protected int creditHour;
+    protected String description;
 
     //constructor
-    public Course(String name, String courseID, Lecturer lecturer, int creditHour, String description) {
+    public Course(String courseName, String courseID, Lecturer lecturer, int creditHour, String description) {
         this.courseID = courseID;
         this.creditHour = creditHour;
-        this.name = name;
+        this.courseName = courseName;
         this.description = description;
         this.lecturer = lecturer;
     }
+
+    public Course(String courseName, boolean freeTrialAvailable, double courseFee) {
+        this.courseName = courseName;
+        this.freeTrialAvailable = freeTrialAvailable;
+        this.courseFee = courseFee;
+    }
     
-    public String getName() {
-        return name;
+    public String getcourseName() {
+        return courseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setcourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getCourseID() {
@@ -51,11 +60,42 @@ public class Course {
         this.description = description;
     }
 
-    public void getLectureCourse(String name, String courseID, String description) { //courseID is just using the index of the array 
+    public boolean isFreeTrialAvailable() {
+        return freeTrialAvailable;
+    }
+
+    public double getCourseFee() {
+        return courseFee;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
+    public void useFreeTrial() {
+        if (freeTrialAvailable) {
+            System.out.println("Congratulations! You have successfully used the free trial period.");
+            freeTrialAvailable = false;
+        } else {
+            System.out.println("Sorry! The free trial period is not available for this course.");
+        }
+    }
+
+    public abstract void makePayment(String paymentDetails);
+
+    public abstract boolean hasNextModule();
+
+    public abstract Module getNextModule();
+
+    public void getLectureCourse(String courseName, String courseID, String description) { //courseID is just using the index of the array 
 
     }
 
-    public void getStudentCourse(String name, String courseID, Lecturer lecturer, String creditHour, String description) {
+    public void getStudentCourse(String courseName, String courseID, Lecturer lecturer, String creditHour, String description) {
 
     }
 }

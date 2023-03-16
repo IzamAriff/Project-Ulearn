@@ -10,13 +10,17 @@ public class Lecturer extends Person {
     private String phoneNum;
     
     //constructor: assigning values to attributes
-    public Lecturer(String name, String id, int age, String ic, String department,
-                    Office office, ArrayList<Session> session) {
+    public Lecturer(String name, String id, int age, String ic, String department, String email,
+                    Office office, Session[] session, String phoneNum) {
         
         // call the constructor of the Person class using 'super'
-        super(name, id, age, ic, department); 
+        super(name, id, age, ic, department, email);
         this.office = office;
         this.session = session;
+        this.phoneNum = phoneNum;
+    }
+
+    public Lecturer() {
     }
 
     public void setPhoneNum(String phoneNum) {
@@ -35,40 +39,40 @@ public class Lecturer extends Person {
         return office;
     }
     
-    public void setSession(ArrayList<Session> session) {
+    public void setSession(Session[] session) {
         this.session = session;
     }
     
-    public ArrayList<Session> getSession() {
+    public Session[] getSession() {
         return session;
     }
     
     public void createLecturer() {
         System.out.println("----------Lecturer's Details----------");
         Lecturer lec = new Lecturer();
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.print("Name of lecturer: ");
-        Name name = lec.getName();
-        setName(name);
+        String name = input.nextLine();
+        lec.setName(name);
 
-        System.out.print("Office room: ");
-        String officeAddr = scanner.next();
-        setOfficeAddr(officeAddr);
+        System.out.print("Office Block: ");
+        String block = input.nextLine();
+        System.out.print("Office Level: ");
+        String level = input.nextLine();
+        System.out.print("Office Room: ");
+        String room = input.nextLine();
+        Office office = new Office(block, level, room);
 
         System.out.print("Office number: ");
-        String officeNum = scanner.next();
-        setOfficeNum(officeNum);
-
-        System.out.print("Lecturer's phone number: ");
-        String phoneNum = scanner.next();
-        setPhoneNum(phoneNum);
+        phoneNum = input.nextLine();
+        lec.setPhoneNum(phoneNum);
 
         System.out.print("Lecturer's email: ");
-        String email = scanner.next();
-        setEmail(email);
+        String email = input.next();
+        lec.setEmail(email);
 
-        scanner.close();
+        input.close();
 
         System.out.println("Lecturer's details created successfully.");
 
@@ -76,9 +80,8 @@ public class Lecturer extends Person {
 
     public void displayLecturer() {
         System.out.println("Name: " + this.name);
-        System.out.println("Office room: " + this.officeAddr);
-        System.out.println("office number: " + this.officeNum);
-        System.out.println("Phone number: " + this.phoneNum);
+        System.out.println("Office room: " + this.office);
+        System.out.println("office number: " + this.phoneNum);
         System.out.println("Email: " + this.email);
     }
 
