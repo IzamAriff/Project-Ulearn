@@ -7,20 +7,20 @@ public class Schedule {
   
   //constructor
   private Schedule(Session[] session) {
-    this.session = session;
+    this.session = new Session[1];
   }
   
   //setter and getter
-  public void setSession(Session session) {
+  public void setSession(Session[] session) {
     this.session = session;
   }
   
-  public Session getSession() {
+  public Session[] getSession() {
     return session;
   }
   
   //method
-  public void viewSchedule(Session session[]) {
+  public void viewSchedule(Session[] session) {
   }
 
 }
