@@ -1,24 +1,33 @@
-package com.ulearn.utility;
+package com.ulearn.Utility;
 
 public class Semester {
 
     //attribute
-    private String name;
+    private static final String[] name = {
+            "1st Year 1st Sem",
+            "1st Year 2nd Sem",
+            "1nd Year 3st Sem",
+            "2nd Year 1nd Sem",
+            "2rd Year 2st Sem",
+            "2rd Year 3nd Sem",
+            "3th Year 1st Sem",
+            "3th Year 2nd Sem",
+            "3th Year 3st Sem"
+    };
+
     private char[][] grades;
     
     //constructor
     public Semester(String name, char[][] grades) {
-        this.name = name;
         this.grades = grades;
     }
-    
-    //getter and setter
-    public String getName() {
-        return name;
+
+    public Semester() {
     }
 
-    public void setName(String name) {
-        this.name = name;
+    //getter and setter
+    public String getName(int index) {
+        return name[index];
     }
     
     public char[][] getGrades() {
@@ -33,12 +42,12 @@ public class Semester {
     public static void main(String[] args) {
         
         Semester semester = new Semester();
-        semester.setName("Final 2022");
+        String semesterName = semester.getName(0); //0 index at 1st Year 1st Sem
 
         char[][] grades = {{'A', 'B', 'C'}, {'A', 'A', 'B'}};
         semester.setGrades(grades);
 
-        System.out.println("Semester Name: " + semester.getName());
+        System.out.println("Semester Name: " + semesterName);
         System.out.println("Grades: ");
         for (int i = 0; i < grades.length; i++) {
             for (int j = 0; j < grades[i].length; j++) {

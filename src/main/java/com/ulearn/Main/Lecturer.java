@@ -1,5 +1,5 @@
-package com.ulearn.main;
-import com.ulearn.utility.*;
+package com.ulearn.Main;
+import com.ulearn.Utility.*;
 
 import java.util.Scanner;
 

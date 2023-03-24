@@ -1,8 +1,7 @@
-package com.ulearn.main;
+package com.ulearn.Main;
 
-import com.ulearn.subjects.*;
-
-import java.sql.SQLException;
+import com.ulearn.Subjects.DataStructuresAndAlgorithms;
+import com.ulearn.Subjects.IntroductionToJava;
 
 import java.util.Scanner;
 

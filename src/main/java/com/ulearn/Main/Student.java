@@ -1,5 +1,5 @@
-package com.ulearn.main;
-import com.ulearn.utility.Semester;
+package com.ulearn.Main;
+import com.ulearn.Utility.Semester;
 
 public class Student extends Person {
     

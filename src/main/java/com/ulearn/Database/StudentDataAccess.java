@@ -1,6 +1,6 @@
-package com.ulearn.database;
+package com.ulearn.Database;
 
-import com.ulearn.main.Student;
+import com.ulearn.Main.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,4 +1,4 @@
-package com.ulearn.utility;
+package com.ulearn.Utility;
 
 public class Schedule {
   

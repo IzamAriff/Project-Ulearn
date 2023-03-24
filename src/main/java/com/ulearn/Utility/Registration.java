@@ -1,6 +1,6 @@
-package com.ulearn.utility;
+package com.ulearn.Utility;
 
-import com.ulearn.main.Student;
+import com.ulearn.Main.Student;
 
 public class Registration {
 

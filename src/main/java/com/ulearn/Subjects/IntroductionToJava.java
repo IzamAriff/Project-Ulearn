@@ -1,6 +1,6 @@
-package com.ulearn.subjects;
-import com.ulearn.main.*;
-import com.ulearn.main.Module;
+package com.ulearn.Subjects;
+import com.ulearn.Main.*;
+import com.ulearn.Main.Module;
 
 public class IntroductionToJava extends Course {
     private Module[] modules;

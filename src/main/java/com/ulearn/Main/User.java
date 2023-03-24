@@ -1,4 +1,4 @@
-package com.ulearn.main;
+package com.ulearn.Main;
 
 public class User {
     private final String name;

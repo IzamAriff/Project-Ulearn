@@ -1,6 +1,6 @@
-package com.ulearn.subjects;
-import com.ulearn.main.Course;
-import com.ulearn.main.Module;
+package com.ulearn.Subjects;
+import com.ulearn.Main.Course;
+import com.ulearn.Main.Module;
 
 public class DataStructuresAndAlgorithms extends Course {
     private Module[] modules;
