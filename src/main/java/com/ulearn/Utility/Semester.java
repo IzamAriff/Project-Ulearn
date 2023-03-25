@@ -6,13 +6,13 @@ public class Semester {
     private static final String[] name = {
             "1st Year 1st Sem",
             "1st Year 2nd Sem",
-            "1nd Year 3st Sem",
-            "2nd Year 1nd Sem",
-            "2rd Year 2st Sem",
-            "2rd Year 3nd Sem",
-            "3th Year 1st Sem",
-            "3th Year 2nd Sem",
-            "3th Year 3st Sem"
+            "1nd Year 3rd Sem",
+            "2nd Year 1st Sem",
+            "2nd Year 2nd Sem",
+            "2nd Year 3rd Sem",
+            "3rd Year 1st Sem",
+            "3rd Year 2nd Sem",
+            "3rd Year 3rd Sem"
     };
 
     private char[][] grades;
