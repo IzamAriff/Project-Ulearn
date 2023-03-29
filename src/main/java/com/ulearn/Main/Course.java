@@ -2,7 +2,6 @@ package com.ulearn.Main;
 
 public abstract class Course {
 
-//izam hensem memek
     //attribute
     protected String courseName;
     protected String courseID;
@@ -16,18 +15,19 @@ public abstract class Course {
     //constructor
     public Course(String courseName, String courseID, Lecturer lecturer, int creditHour, String description) {
         this.courseID = courseID;
-        this.creditHour = creditHour;
         this.courseName = courseName;
+        this.creditHour = creditHour;
         this.description = description;
         this.lecturer = lecturer;
     }
 
-    public Course(String courseName, boolean freeTrialAvailable, double courseFee) {
+    public Course(String courseName,String courseID, boolean freeTrialAvailable, double courseFee) {
+        this.courseID = courseID;
         this.courseName = courseName;
         this.freeTrialAvailable = freeTrialAvailable;
         this.courseFee = courseFee;
     }
-    
+
     public String getcourseName() {
         return courseName;
     }

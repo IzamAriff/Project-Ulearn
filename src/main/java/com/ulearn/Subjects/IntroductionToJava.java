@@ -7,7 +7,7 @@ public class IntroductionToJava extends Course {
     private int currentModuleIndex;
 
     public IntroductionToJava() {
-        super("Introduction to Programming", true, 50.0);
+        super("Introduction to Programming", "CS141", true, 50.0);
         modules = new Module[3];
         modules[0] = new Module("Variables and Data Types");
         modules[1] = new Module("Control Structures");

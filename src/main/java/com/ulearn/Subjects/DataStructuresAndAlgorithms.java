@@ -7,7 +7,7 @@ public class DataStructuresAndAlgorithms extends Course {
     private int currentModuleIndex;
 
     public DataStructuresAndAlgorithms() {
-        super("Data Structures and Algorithms", false, 100.0);
+        super("Data Structures and Algorithms", "CS120" , false, 100.0);
         modules = new Module[5];
         modules[0] = new Module("Introduction to Data Structures");
         modules[1] = new Module("Arrays and Linked Lists");
@@ -31,4 +31,6 @@ public class DataStructuresAndAlgorithms extends Course {
     public Module getNextModule() {
         return null;
     }
+
+
 }

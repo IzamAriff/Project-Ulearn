@@ -3,21 +3,26 @@ import com.ulearn.Utility.*;
 
 import java.util.Scanner;
 
-public class Lecturer extends Person {
+public class Lecturer extends User {
     
     private Office office;
     private Session[] session;
     private String phoneNum;
     
     //constructor: assigning values to attributes
-    public Lecturer(String name, String id, int age, String ic, String department, String email,
-                    Office office, Session[] session, String phoneNum) {
-        
-        // call the constructor of the Person class using 'super'
-        super(name, id, age, ic, department, email);
-        this.office = office;
-        this.session = session;
+
+
+    public Lecturer(String name, String email, String password) {
+        super(name, email, password);
+    }
+
+    public Lecturer(String id, int age, String ic, String department, String phoneNum) {
+        super(id, age, ic, department);
         this.phoneNum = phoneNum;
+    }
+
+    public Lecturer(Office office) {
+        this.office = office;
     }
 
     public Lecturer() {
