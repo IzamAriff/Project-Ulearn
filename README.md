@@ -19,6 +19,9 @@ such as a student class, lecturer, semester, result, course,
 session, schedule and more. Also it has a database that stores
 the necessary info about the user.
 
+# Problem Statement
+Problem statement: The current online education platforms lack in providing a seamless and efficient experience for both students and instructors. Our goal is to create an education hub that addresses these issues, allowing for an organized and streamlined learning experience.
+
 # Task distribution
 We have distribute the task to certain part which is below with
 their contributor
