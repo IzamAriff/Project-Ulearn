@@ -35,11 +35,11 @@ Semester-
 
 (sub) Lecturer- Yusuf
 
-Office- 
+Office- Irfan
 
 Session-
 
-Schedule- Irfan
+Schedule- Izam
 
 (abstract, super) Course, (sub) IntroToJava, etc: - Izam
 
