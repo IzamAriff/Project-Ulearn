@@ -23,10 +23,26 @@ the necessary info about the user.
 Problem statement: The current online education platforms lack in providing a seamless and efficient experience for both students and instructors. Our goal is to create an education hub that addresses these issues, allowing for an organized and streamlined learning experience.
 
 # Task distribution
-We have distribute the task to certain part which is below with
-their contributor
-Database- Ammar
-javaFX- Yusof, izam
-Main- Azam, Saifullah
-Subject- damien
-Utility-irfan
+We have distribute the task to certain part which is below with their contribution
+
+Main- Izam, Saifullah, Azam, Yusuf, Ammar
+
+(super) User- Izam
+(sub) Student- 
+Semester-
+
+(sub) Lecturer- Yusuf
+Office- 
+Session-
+Schedule- Irfan
+
+(abstract, super) Course, (sub) IntroToJava, etc: - Izam
+Module- Damien
+
+JavaFX- Izam, Yusuf
+
+
+
+
+
+
