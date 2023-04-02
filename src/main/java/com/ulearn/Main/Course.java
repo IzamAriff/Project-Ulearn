@@ -2,7 +2,7 @@ package com.ulearn.Main;
 
 import java.util.ArrayList;
 
-public abstract class Course extends ArrayList<Course> {
+public class Course extends ArrayList<Course> {
 
     //attribute
     protected String courseName;
@@ -98,12 +98,20 @@ public abstract class Course extends ArrayList<Course> {
             System.out.println("Sorry! The free trial period is not available for this course.");
         }
     }
+    public void makePayment(String paymentDetails) {
+        System.out.println("Payment of " + courseFee + " has been made using the following details: " + paymentDetails);
+    }
 
-    public abstract void makePayment(String paymentDetails);
+    public boolean hasNextModule() {
+        return false;
+    }
 
-    public abstract boolean hasNextModule();
+    public Module getNextModule() {
+        return null;
+    }
 
-    public abstract Module getNextModule();
+
+
 
 
 }

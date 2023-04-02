@@ -11,6 +11,7 @@ public class Main {
         ArrayList<User> users = new ArrayList<>();
         ArrayList<Student> students = new ArrayList<>();
         ArrayList<Lecturer> lecturers = new ArrayList<>();
+        ArrayList<Course> courses = new ArrayList<>();
 
         Course course = null;
         String cName;
@@ -51,7 +52,7 @@ public class Main {
                 int userAge = input.nextInt();
                 input.nextLine();
                 String userID = Integer.toString(users.size());
-                System.out.print("ID: " + userID); //created through index of user
+                System.out.println("ID: " + userID); //created through index of user
                 System.out.print("IC: ");
                 String userIC = input.nextLine();
                 System.out.print("Department: ");
@@ -68,7 +69,8 @@ public class Main {
                 System.out.print("Enter your choice: ");
                 choice = input.nextInt();
 
-                ArrayList<Course> courses = new ArrayList<>();
+
+
                 for (int i = 0; i < 2; i++) {
 
                     switch (choice) {
@@ -87,18 +89,16 @@ public class Main {
 
                 students.add(new Student(course));
 
-                System.out.println("You have selected the " + course.get(0).getCourseName() + " course and " + course.get(1).getCourseName() + "course");
+                System.out.println("You have selected the " + courses.get(0).getCourseName() + " Course!");
                 System.out.println("Please enroll in the course.");
                 System.out.print("Do you want to use the free trial period? (Y/N): ");
                 String freeTrialChoice = input.next();
                 if (freeTrialChoice.equalsIgnoreCase("Y")) {
-                    course.get(0).useFreeTrial();
-                    course.get(1).useFreeTrial();
+                    courses.get(0).useFreeTrial();
                 } else {
                     System.out.print("Please enter your payment details: ");
                     String paymentDetails = input.next();
-                    course.get(0).makePayment(paymentDetails);
-                    course.get(1).makePayment(paymentDetails);
+                    courses.get(0).makePayment(paymentDetails);
                 }
 
                 System.out.println("Student Registration Completed: ");
@@ -114,7 +114,7 @@ public class Main {
                 userAge = input.nextInt();
                 input.nextLine();
                 userID = Integer.toString(users.size());
-                System.out.print("ID: " + userID); //created through index of user
+                System.out.println("ID: " + userID); //created through index of user
                 System.out.print("IC: ");
                 userIC = input.nextLine();
                 System.out.print("Department: ");
@@ -124,7 +124,7 @@ public class Main {
 
                 lecturers.add(new Lecturer(userID, userAge, userIC, userDept, lecturerPhoneNum));
 
-                System.out.println("Office Location: ");
+                System.out.println("Office Location:- ");
                 System.out.print("Block: ");
                 String b = input.nextLine();
                 System.out.print("Level: ");
@@ -135,18 +135,41 @@ public class Main {
                 Office office = new Office(b, l, r);
                 lecturers.add(new Lecturer(office));
 
-                System.out.println("Lecturer Registration Completed: ");
+                System.out.println("Lecturer Registration Completed!");
                 break;
         }
 
-            // Course Progress
-            System.out.println("You have successfully enrolled in the " + course.get(0).getCourseName() + " course and " + course.get(1).getCourseName() + "course");
-            System.out.println("Please access the course materials from the course dashboard.");
-            for (int j = 0; j < 2; j++) {
-                while (course.get(j).hasNextModule()) {
+        // Course Selection and Enrollment
+        System.out.println("Please select a course from the list below.");
+        System.out.println("1. Introduction to Programming");
+        System.out.println("2. Data Structures and Algorithms");
+        System.out.print("Enter your choice: ");
+        choice = input.nextInt();
 
-                    Module currentModule = course.get(j).getNextModule();
-                    System.out.println("Please complete the " + currentModule.getmoduleName() + " module.");
+        for (int i = 0; i < 2; i++) {
+
+            switch (choice) {
+                case 1:
+                    courses.add(new IntroductionToJava());
+                    break;
+                case 2:
+                    courses.add(new DataStructuresAndAlgorithms());
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    return;
+            }
+
+        }
+
+            // Course Progress
+            System.out.println("You have successfully enrolled in the " + courses.get(0).getCourseName() + " Course!");
+            System.out.println("Please access the course materials from the course dashboard.");
+            for (int j = 0; j < 1; j++) {
+                while (courses.get(j).hasNextModule()) {
+
+                    Module currentModule = courses.get(j).getNextModule();
+                    System.out.println("Please complete all activities in " + currentModule.getmoduleName() + " Module.");
                     System.out.print("Did you understand the concepts in the module? (Y/N): ");
                     String understoodChoice = input.next();
                     if (understoodChoice.equalsIgnoreCase("N")) {
@@ -155,9 +178,10 @@ public class Main {
                         currentModule.setFeedback(feedback);
                     }
                     currentModule.markAsComplete();
+                    }
 
                     // Completion Certificate
-                    System.out.println("Congratulations! You have completed the " + course.get(j).getCourseName() + " course.");
+                    System.out.println("Congratulations! You have completed the " + courses.get(j).getCourseName() + " Course.");
                     System.out.println("Please download your completion certificate from the course dashboard.");
 
                     // Review and Feedback
@@ -166,16 +190,10 @@ public class Main {
                     if (reviewChoice.equalsIgnoreCase("Y")) {
                         System.out.print("Please provide your review for the course: ");
                         String feedback = input.next();
-                        course.get(j).setFeedback(feedback);
+                        courses.get(j).setFeedback(feedback);
                     }
-                }
 
             }
-
-
-
-
-
 
         input.close();
     }
