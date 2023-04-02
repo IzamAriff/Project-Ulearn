@@ -164,7 +164,11 @@ public class Main {
 
             // Course Progress
             System.out.println("You have successfully enrolled in the " + courses.get(0).getCourseName() + " Course!");
-            System.out.println("Please access the course materials from the course dashboard.");
+
+            System.out.println("Choose which subject you are teaching");
+
+
+            /*System.out.println("Please access the course materials from the course dashboard.");
             for (int j = 0; j < 1; j++) {
                 while (courses.get(j).hasNextModule()) {
 
@@ -192,8 +196,7 @@ public class Main {
                         String feedback = input.next();
                         courses.get(j).setFeedback(feedback);
                     }
-
-            }
+            } */
 
         input.close();
     }
