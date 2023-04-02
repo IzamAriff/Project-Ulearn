@@ -29,7 +29,7 @@ Main- Izam, Saifullah, Azam, Yusuf, Ammar
 
 (super) User- Izam
 
-(sub) Student- 
+(sub) Student-  Azam
 
 Semester- Irfan
 
