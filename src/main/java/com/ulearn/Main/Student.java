@@ -13,9 +13,6 @@ public class Student extends User {
     private ArrayList<Course> course = new ArrayList<>();
     private Semester semester;
     
-    //constructor: assigning values to attributes
-
-
     public Student(String name, String email, String password) {
         super(name, email, password);
     }
@@ -69,4 +66,7 @@ public class Student extends User {
         return programme;
     }
 
+    public ArrayList<Course> getCourses() {
+        return course;
+    }
 }
