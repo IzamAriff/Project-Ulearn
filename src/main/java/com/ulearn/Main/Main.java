@@ -124,7 +124,7 @@ public class Main {
 
                 lecturers.add(new Lecturer(userID, userAge, userIC, userDept, lecturerPhoneNum));
 
-                System.out.println("Office Location:- ");
+                System.out.println("Office Location:_ ");
                 System.out.print("Block: ");
                 String b = input.nextLine();
                 System.out.print("Level: ");
@@ -139,36 +139,12 @@ public class Main {
                 break;
         }
 
-        // Course Selection and Enrollment
-        System.out.println("Please select a course from the list below.");
-        System.out.println("1. Introduction to Programming");
-        System.out.println("2. Data Structures and Algorithms");
-        System.out.print("Enter your choice: ");
-        choice = input.nextInt();
-
-        for (int i = 0; i < 2; i++) {
-
-            switch (choice) {
-                case 1:
-                    courses.add(new IntroductionToJava());
-                    break;
-                case 2:
-                    courses.add(new DataStructuresAndAlgorithms());
-                    break;
-                default:
-                    System.out.println("Invalid choice.");
-                    return;
-            }
-
-        }
+        if(choice==2){
+            return;}
 
             // Course Progress
             System.out.println("You have successfully enrolled in the " + courses.get(0).getCourseName() + " Course!");
-
-            System.out.println("Choose which subject you are teaching");
-
-
-            /*System.out.println("Please access the course materials from the course dashboard.");
+            System.out.println("Please access the course materials from the course dashboard.");
             for (int j = 0; j < 1; j++) {
                 while (courses.get(j).hasNextModule()) {
 
@@ -196,7 +172,8 @@ public class Main {
                         String feedback = input.next();
                         courses.get(j).setFeedback(feedback);
                     }
-            } */
+
+            }
 
         input.close();
     }
