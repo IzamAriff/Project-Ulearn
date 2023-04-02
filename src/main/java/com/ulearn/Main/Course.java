@@ -22,6 +22,8 @@ public class Course extends ArrayList<Course> {
         this.description = description;
     }
 
+    public Course(){}
+
     public Course(String courseName, String courseID, boolean freeTrialAvailable, double courseFee,
                   int creditHour, String lecturer, String description) {
         this.courseID = courseID;

@@ -70,7 +70,6 @@ public class Main {
                 choice = input.nextInt();
 
 
-
                 for (int i = 0; i < 2; i++) {
 
                     switch (choice) {
@@ -87,7 +86,7 @@ public class Main {
 
                 }
 
-                students.add(new Student(course));
+                students.add(new Student(courses));
 
                 System.out.println("You have selected the " + courses.get(0).getCourseName() + " Course!");
                 System.out.println("Please enroll in the course.");
@@ -107,6 +106,8 @@ public class Main {
             case 2:
 
                 //Option 2: Lecturer
+
+                int lindex=1; //lecturer index
 
                 lecturers.add(new Lecturer(userName, userEmail, userPassword)); //passes the failed information to this
                 System.out.println("Please continue create your profile.");
@@ -134,30 +135,52 @@ public class Main {
 
                 Office office = new Office(b, l, r);
                 lecturers.add(new Lecturer(office));
+                lecturers.add(new Lecturer(courses));
 
                 System.out.println("Lecturer Registration Completed!");
-                break;
-        }
 
-        if(choice==2){
-            return;}
+                System.out.println("Choose subject you will be teaching");
 
-            // Course Progress
-            System.out.println("You have successfully enrolled in the " + courses.get(0).getCourseName() + " Course!");
-            System.out.println("Please access the course materials from the course dashboard.");
-            for (int j = 0; j < 1; j++) {
-                while (courses.get(j).hasNextModule()) {
+                System.out.println("1. Introduction to Programming");
+                System.out.println("2. Data Structures and Algorithms");
+                System.out.print("Enter your choice: ");
+                int opt = input.nextInt();
 
-                    Module currentModule = courses.get(j).getNextModule();
-                    System.out.println("Please complete all activities in " + currentModule.getmoduleName() + " Module.");
-                    System.out.print("Did you understand the concepts in the module? (Y/N): ");
-                    String understoodChoice = input.next();
-                    if (understoodChoice.equalsIgnoreCase("N")) {
-                        System.out.print("Please provide your feedback for the module: ");
-                        String feedback = input.next();
-                        currentModule.setFeedback(feedback);
+                    switch (opt) {
+                        case 1:
+                            courses.add(new IntroductionToJava());
+                            break;
+                        case 2:
+                            courses.add(new DataStructuresAndAlgorithms());
+                            break;
+                        default:
+                            System.out.println("Invalid choice.");
+                            return;
                     }
-                    currentModule.markAsComplete();
+
+                System.out.println(courses.get(0).getCourseName());
+                lindex++;
+
+                if (choice == 2) {
+                    return;
+                }
+
+                // Course Progress
+                System.out.println("You have successfully enrolled in the " + courses.get(0).getCourseName() + " Course!");
+                System.out.println("Please access the course materials from the course dashboard.");
+                for (int j = 0; j < 1; j++) {
+                    while (courses.get(j).hasNextModule()) {
+
+                        Module currentModule = courses.get(j).getNextModule();
+                        System.out.println("Please complete all activities in " + currentModule.getmoduleName() + " Module.");
+                        System.out.print("Did you understand the concepts in the module? (Y/N): ");
+                        String understoodChoice = input.next();
+                        if (understoodChoice.equalsIgnoreCase("N")) {
+                            System.out.print("Please provide your feedback for the module: ");
+                            String feedback = input.next();
+                            currentModule.setFeedback(feedback);
+                        }
+                        currentModule.markAsComplete();
                     }
 
                     // Completion Certificate
@@ -173,8 +196,9 @@ public class Main {
                         courses.get(j).setFeedback(feedback);
                     }
 
-            }
+                }
 
-        input.close();
+                input.close();
+        }
     }
 }
