@@ -83,22 +83,5 @@ public class Session {
         System.out.println("Location: " + location);
         System.out.println("Lecturer: " + lecturer.getName());
     }
-    public static void main(String[] args) {
-        // Create a sample course
-        Lecturer lecturer = new Lecturer("John Doe", "johndoe@ulearn.com", "123456789");
-        Course course = new Course("Introduction to Java", "COMP101", lecturer, 3, "A beginner's guide to Java");
-
-        // Create a sample student
-        Person studentInfo = new Person("Jane Doe", "janedoe@ulearn.com", "987654321");
-        Student student = new Student(studentInfo, "S1001");
-
-        // Create a sample session
-        Date sessionDate = new Date();
-        Session session = new Session("S1001-101", "Room 101", new Student[] { student }, lecturer, course, sessionDate);
-
-        // Display the session details
-        session.getSchedule();
-        session.displayCourseInfo();
-
-    }
+    
 }
