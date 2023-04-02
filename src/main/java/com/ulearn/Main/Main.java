@@ -1,7 +1,7 @@
 package com.ulearn.Main;
 
 public class Main {
-    public static void main(String[] args) {/*
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         ArrayList<User> user = new ArrayList<>();
@@ -129,7 +129,7 @@ public class Main {
 
                 System.out.println("Lecturer Registration Completed: ");
                 break;
-        }/*
+        }
 
             // Course Progress
             System.out.println("You have successfully enrolled in the " + course.get(0).getcourseName() + " course and " + course.get(1).getcourseName() + "course");
@@ -169,6 +169,6 @@ public class Main {
 
 
 
-        input.close();*/
+        input.close();
     }
 }
