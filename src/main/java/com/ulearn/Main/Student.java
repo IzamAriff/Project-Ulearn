@@ -49,7 +49,6 @@ public class Student extends User {
         return course;
     }
 
-
     public String getCourseName() {
         if (course instanceof IntroductionToJava) {
             IntroductionToJava i = (IntroductionToJava) course;

@@ -210,6 +210,15 @@ public class HelloApplication extends Application {
             }
         });
 
+        Button backButton = new Button("Back");
+        backButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;");
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                start(stage);
+            }
+        });
+
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -223,6 +232,7 @@ public class HelloApplication extends Application {
         gridPane.addRow(7, departmentLabel, departmentField);
         gridPane.addRow(8, programmeLabel, programmeField);
         gridPane.add(registerButton, 1, 9);
+        gridPane.add(backButton, 2, 9);
 
         vBox.getChildren().addAll(
                 registrationLabel,
@@ -314,6 +324,15 @@ public class HelloApplication extends Application {
             }
         });
 
+        Button backButton = new Button("Back");
+        backButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;");
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                start(stage);
+            }
+        });
+
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -327,6 +346,7 @@ public class HelloApplication extends Application {
         gridPane.addRow(7, departmentLabel, departmentField);
         gridPane.addRow(8, phoneLabel, phoneField);
         gridPane.add(registerButton, 1, 9);
+        gridPane.add(backButton, 2, 9);
 
         vBox.getChildren().addAll(
                 titleLabel,
@@ -478,16 +498,26 @@ public class HelloApplication extends Application {
             }
         });
 
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.addRow(0, emailLabel);
+        gridPane.addRow(1, idLabel);
+        gridPane.addRow(2, departmentLabel);
+        gridPane.add(viewSessionsButton, 1, 3);
+        gridPane.add(addSessionButton, 1, 4);
+        gridPane.add(deleteSessionButton, 1, 5);
+        gridPane.add(createAssignmentButton, 1, 6);
+
         vBox.getChildren().addAll(
                 welcomeLabel,
+                emailLabel,
                 idLabel,
                 departmentLabel,
-                emailLabel,
-                dashboardLabel,
                 viewSessionsButton,
                 addSessionButton,
                 deleteSessionButton,
-                logoutButton
+                createAssignmentButton
         );
 
         Scene scene = new Scene(vBox, 600, 400);
