@@ -34,20 +34,6 @@ public class Schedule {
       System.out.println();
     }
   }
-  public static class Main {
-
-    public static void main(String[] args) {
-      Student[] students = { new Student("John", "Doe", "jd123"), new Student("Jane", "Doe", "jd456") };
-      Lecturer lecturer = new Lecturer("Dr. Smith", "123456");
-      Course course = new Course("Introduction to Java Programming", "CS101", 3, "An introduction to programming in Java.");
-      Session[] sessions = { new Session("CS101-001", "Room 101", students, lecturer, course, new Date(2023, 3, 5)),
-              new Session("CS101-002", "Room 102", students, lecturer, course, new Date(2023, 3, 6)) };
-      Schedule schedule = new Schedule(sessions);
-      schedule.viewSchedule();
-
-
-    }
-
-  }
+ 
 
 }
