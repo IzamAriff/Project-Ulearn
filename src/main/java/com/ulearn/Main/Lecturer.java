@@ -2,6 +2,7 @@ package com.ulearn.Main;
 
 import com.ulearn.Utility.Session;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -10,10 +11,15 @@ public class Lecturer extends User {
     private Office office;
     private Session[] session = new Session[2];
     private String phoneNum;
-    private Course course;
+    private Course course = new Course();
+
+    private ArrayList<Course> teachingcourse = new ArrayList<>();
     
     //constructor: assigning values to attributes
 
+    public Lecturer(ArrayList<Course> course) {
+        this.teachingcourse = course;
+    }
 
     public Lecturer(String name, String email, String password) {
         super(name, email, password);
@@ -35,6 +41,10 @@ public class Lecturer extends User {
 
     public Lecturer(Office office) {
         this.office = office;
+    }
+
+    public Lecturer(Course course) {
+        this.course = course;
     }
 
     public Lecturer() {
@@ -108,8 +118,13 @@ public class Lecturer extends User {
         lecturer.displayLecturer();
     }
 
+    public void setCourses(Course course) {this.course = course;
+    }
     public Course getCourses() {
         return course;
+    }
+    public String getCoursesName() {
+        return course.getCourseName();
     }
 
     public void addSession(String l, Course c, Date d, int i) {
