@@ -3,7 +3,7 @@ package com.ulearn.Main;
 public class User {
 
     protected String name;
-    protected String id; //it is imperative that student id is the index where the person is located
+    protected String id; 
     protected int age;
     protected String ic;
     protected String department;
