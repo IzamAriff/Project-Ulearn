@@ -25,7 +25,7 @@ Problem statement: The current online education platforms lack in providing a se
 # Task distribution
 We have distribute the task to certain part which is below with their contribution
 
-Main- Izam, Saifullah, Azam, Yusuf, Ammar
+Main- Izam, Saifullah, Yusuf, Ammar
 
 (super) User- Izam
 
@@ -37,15 +37,15 @@ Semester- Irfan
 
 Office- Damien
 
-Session- Izam
+Session- Saifullah
 
-Schedule- Izam
+Schedule- Saifullah
 
-(abstract, super) Course, (sub) IntroToJava, etc: - Izam
+Course- Izam
+
+Subject (IntroToJava, Data&Algo):- Izam
 
 Module- Izam
-
-Course- Saifullah
 
 JavaFX- Izam, Yusuf
 
