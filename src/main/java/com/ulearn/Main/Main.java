@@ -1,17 +1,21 @@
 package com.ulearn.Main;
 import com.ulearn.Subjects.DataStructuresAndAlgorithms;
 import com.ulearn.Subjects.IntroductionToJava;
+import com.ulearn.Database.*;
 
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        final StudentDataAccess STUDENTDB = new StudentDataAccess(DBTool.getConnection());
+        final LecturerDataAccess LECTURERDB = new LecturerDataAccess(DBTool.getConnection())
 
         ArrayList<User> users = new ArrayList<>();
-        ArrayList<Student> students = new ArrayList<>();
-        ArrayList<Lecturer> lecturers = new ArrayList<>();
+        ArrayList<Student> students = STUDENTDB.getAllStudents();
+        ArrayList<Lecturer> lecturers = LECTURERDB.getAllLecturers();
         ArrayList<Course> courses = new ArrayList<>();
+
 
         Course course = null;
         String cName;
