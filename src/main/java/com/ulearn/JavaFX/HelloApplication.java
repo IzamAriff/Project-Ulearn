@@ -22,10 +22,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,13 +29,14 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class HelloApplication extends Application {
-    private final ArrayList<User> users = new ArrayList<>();
-    private final ArrayList<Student> students = new ArrayList<>();
-    private final ArrayList<Lecturer> lecturers = new ArrayList<>();
-    private Course course = null;
+    private ArrayList<User> users = new ArrayList<>();
+    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Lecturer> lecturers = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
     private Scanner input;
     private String cName;
     private String lName;
+    private int uniqueId = -1;
 
     @Override
     public void start(Stage stage) {
@@ -141,6 +138,7 @@ public class HelloApplication extends Application {
     }
 
     private void studentRegistration(Stage stage) {
+        uniqueId++;
         VBox vBox = new VBox(20);
         vBox.setPadding(new Insets(20));
         vBox.setAlignment(Pos.CENTER);
@@ -202,9 +200,9 @@ public class HelloApplication extends Application {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Passwords do not match!", ButtonType.OK);
                     alert.showAndWait();
                 } else {
-                    User user = new User();
-                    int uniqueId = user.getUniqueId();
                     students.add(uniqueId, new Student(name, email, password, age, id, ic, department, programme));
+                    System.out.println(students.get(0).getName());
+                    System.out.println(uniqueId);
                     assignCourse(stage, students, uniqueId);
                 }
             }
@@ -246,6 +244,7 @@ public class HelloApplication extends Application {
     // -->> assignCourse -->> studentDashboard
 
     private void lecturerRegistration(Stage stage) {
+        uniqueId++;
         VBox vBox = new VBox(20);
         vBox.setPadding(new Insets(20));
         vBox.setAlignment(Pos.CENTER);
@@ -307,19 +306,13 @@ public class HelloApplication extends Application {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Passwords do not match!", ButtonType.OK);
                     alert.showAndWait();
                 } else {
-
-                    User user = new User();
-                    int uniqueId = user.getUniqueId();
                     lecturers.add(uniqueId, new Lecturer(name, email, password, age, id, ic, department, phoneNum));
                     for (Lecturer lecturer: lecturers) {
                         if (lecturer.getId().equals(id)) {
-                            // Found the matching lecturer!
-                            // Do something with the lecturer here.
                             lecturerDashboard(stage, lecturers, uniqueId);
                             break;
                         }
                     }
-
                 }
             }
         });
@@ -358,7 +351,7 @@ public class HelloApplication extends Application {
     }
     // -->> lecturerDashboard
 
-    private void studentDashboard(Stage stage, ArrayList<Student> students, int uniqueId, Course courses) {
+    private void studentDashboard(Stage stage, ArrayList<Student> students, int uniqueId, ArrayList<Course> courses) {
         VBox vBox = new VBox(20);
         vBox.setPadding(new Insets(20));
         vBox.setAlignment(Pos.CENTER);
@@ -381,8 +374,13 @@ public class HelloApplication extends Application {
         Label courseListView = new Label("Your courses:");
         courseListView.setStyle("-fx-font-size: 16px;");
 
+        //System.out.println(students.get(uniqueId).getCourseName());
+
         // Display the available courses Name in a ListView
-        ObservableList<String> courseList = FXCollections.observableArrayList(students.get(uniqueId).getCourseName()); //i- student array, j-course array
+        ObservableList<String> courseList = FXCollections.observableArrayList();
+        for (Course course : students.get(uniqueId).getCourses()) {
+            courseList.add(students.get(uniqueId).getCourseName());
+        }
         ListView<String> listView = new ListView<>(courseList);
         listView.setPrefWidth(400);
 
@@ -528,6 +526,12 @@ public class HelloApplication extends Application {
     // issue: resolved
 
     private void assignCourse(Stage stage, ArrayList<Student> students, int uniqueId) {
+        System.out.println(uniqueId);
+        System.out.println(students.get(0).getName());
+        // Get the selected student
+        //List<Student> selectedStudent = students;
+        courses.add(new IntroductionToJava());
+        courses.add(new DataStructuresAndAlgorithms());
 
         // Create a list of available courses
         List<Course> availableCourses = new ArrayList<>();
@@ -544,10 +548,12 @@ public class HelloApplication extends Application {
 
         // Add a button to assign the selected course
         Button assignButton = new Button("Assign Course");
+        assignButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;");
         assignButton.setOnAction(event -> {
             Course selectedCourse = listView.getSelectionModel().getSelectedItem();
             if (selectedCourse != null) {
-                students.add(uniqueId, new Student(selectedCourse));
+                // Update the existing Student object
+                students.get(uniqueId).setCourse(selectedCourse);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Course Assigned");
                 alert.setHeaderText(null);
@@ -567,6 +573,7 @@ public class HelloApplication extends Application {
 
         // Add a button to go to the student dashboard
         Button dashboardButton = new Button("Go to Dashboard");
+        dashboardButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;");
         dashboardButton.setOnAction(event -> {
             Course selectedCourse = listView.getSelectionModel().getSelectedItem();
             if (selectedCourse != null) {
@@ -587,20 +594,24 @@ public class HelloApplication extends Application {
     // issue: course is abstract, thus can't find specific course to the parameter inserted,
     // status: resolve with using instance rather than index
 
-    private void courseDetails(Stage stage, ArrayList<Student> students, int uniqueId, Course courses) {
+    private void courseDetails(Stage stage, ArrayList<Student> students, int uniqueId, ArrayList<Course> courses) {
         VBox vBox = new VBox(20);
         vBox.setPadding(new Insets(20));
         vBox.setAlignment(Pos.CENTER);
+
+        int courseindex = 0;
 
         if (courses instanceof IntroductionToJava) {
             IntroductionToJava i = (IntroductionToJava) courses;
             cName = i.getCourseName();
             lName = i.getCourseLecturer();
+            courseindex = 0;
 
         } else if (courses instanceof DataStructuresAndAlgorithms) {
             DataStructuresAndAlgorithms d = (DataStructuresAndAlgorithms) courses;
             cName = d.getCourseName();
             lName = d.getCourseLecturer();
+            courseindex = 1;
         }
 
         Label courseLabel = new Label("Course: " + cName );
@@ -612,7 +623,7 @@ public class HelloApplication extends Application {
         Label descriptionLabel = new Label("Description:");
         descriptionLabel.setStyle("-fx-font-size: 16px;");
         TextArea descriptionTextArea = new TextArea();
-        descriptionTextArea.setText(course.getDescription());
+        descriptionTextArea.setText(courses.get(courseindex).getDescription());
         descriptionTextArea.setEditable(false);
         descriptionTextArea.setWrapText(true);
         descriptionTextArea.setPrefRowCount(5);
@@ -697,7 +708,7 @@ public class HelloApplication extends Application {
     // -->> createAssignment
     // no issue
 
-    private void createAssignment(Stage stage, ArrayList<Lecturer> lecturers, int uniqueId, Course course) {
+    private void createAssignment(Stage stage, ArrayList<Lecturer> lecturers, int uniqueId, ArrayList<Course> courses) {
         VBox vBox = new VBox(20);
         vBox.setPadding(new Insets(20));
         vBox.setAlignment(Pos.CENTER);
@@ -749,22 +760,24 @@ public class HelloApplication extends Application {
     // -->> lecturerDashboard
     // no issue
 
-    private void viewGrades(Stage stage, ArrayList<Student> students, int uniqueId, Course courses) {
+    private void viewGrades(Stage stage, ArrayList<Student> students, int uniqueId, ArrayList<Course> courses) {
         VBox vBox = new VBox(20);
         vBox.setPadding(new Insets(20));
         vBox.setAlignment(Pos.CENTER);
+
+        int courseindex = 0;
 
         if (courses instanceof IntroductionToJava) {
             IntroductionToJava i = (IntroductionToJava) courses;
             cName = i.getCourseName();
             lName = i.getCourseLecturer();
-            course = new IntroductionToJava();
+            courseindex = 0;
 
         } else if (courses instanceof DataStructuresAndAlgorithms) {
             DataStructuresAndAlgorithms d = (DataStructuresAndAlgorithms) courses;
             cName = d.getCourseName();
             lName = d.getCourseLecturer();
-            course = new DataStructuresAndAlgorithms();
+            courseindex = 1;
         }
 
         Label titleLabel = new Label(cName + " Grades");
@@ -794,7 +807,7 @@ public class HelloApplication extends Application {
     }
     // -->> studentDashboard
 
-    private void viewEnrolledCourses(Stage stage, ArrayList<Student> students, int uniqueId, Course courses)  {
+    private void viewEnrolledCourses(Stage stage, ArrayList<Student> students, int uniqueId, ArrayList<Course> courses)  {
         VBox vBox = new VBox(20);
         vBox.setPadding(new Insets(20));
         vBox.setAlignment(Pos.CENTER);
@@ -1005,13 +1018,5 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+
 }
-
-
-
-
-
-
-
-
-
