@@ -1,5 +1,7 @@
 package com.ulearn.Main;
 
+import com.ulearn.Subjects.DataStructuresAndAlgorithms;
+import com.ulearn.Subjects.IntroductionToJava;
 import com.ulearn.Utility.Semester;
 
 import java.util.ArrayList;
@@ -48,9 +50,16 @@ public class Student extends User {
     }
 
 
-    public String getCourseName(1) {
-
-        return course.getCourseName();
+    public String getCourseName() {
+        if (course instanceof IntroductionToJava) {
+            IntroductionToJava i = (IntroductionToJava) course;
+            return i.getCourseName();
+        } else if (course instanceof DataStructuresAndAlgorithms) {
+            DataStructuresAndAlgorithms d = (DataStructuresAndAlgorithms) course;
+            return d.getCourseName();
+        } else {
+            return "";
+        }
     }
 
     public void setProgramme(String programe) {

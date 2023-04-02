@@ -362,11 +362,9 @@ public class HelloApplication extends Application {
         courseListView.setStyle("-fx-font-size: 16px;");
 
         // Display the available courses Name in a ListView
-        for (int j = 0; j < 2; j++) {
-            ObservableList<String> courseList = FXCollections.observableArrayList(students.get(uniqueId).getCourseName()); //i- student array, j-course array
-            ListView<String> listView = new ListView<>(courseList);
-            listView.setPrefWidth(400);
-        }
+        ObservableList<String> courseList = FXCollections.observableArrayList(students.get(uniqueId).getCourseName()); //i- student array, j-course array
+        ListView<String> listView = new ListView<>(courseList);
+        listView.setPrefWidth(400);
 
         Button enrollButton = new Button("Enroll in course");
         enrollButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;");
