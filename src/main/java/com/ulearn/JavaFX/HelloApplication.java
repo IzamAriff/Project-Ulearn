@@ -528,8 +528,6 @@ public class HelloApplication extends Application {
     // issue: resolved
 
     private void assignCourse(Stage stage, ArrayList<Student> students, int uniqueId) {
-        // Get the selected student
-        List<Student> selectedStudent = null;
 
         // Create a list of available courses
         List<Course> availableCourses = new ArrayList<>();

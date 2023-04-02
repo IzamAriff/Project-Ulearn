@@ -1,12 +1,20 @@
 package com.ulearn.Main;
+import com.ulearn.Subjects.DataStructuresAndAlgorithms;
+import com.ulearn.Subjects.IntroductionToJava;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        ArrayList<User> user = new ArrayList<>();
-        ArrayList<Student> student = new ArrayList<>();
-        ArrayList<Lecturer> lecturer = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
+        ArrayList<Student> students = new ArrayList<>();
+        ArrayList<Lecturer> lecturers = new ArrayList<>();
+
+        Course course = null;
+        String cName;
+        String lName;
 
         //FRAME 1
         // User Registration
@@ -19,7 +27,7 @@ public class Main {
         System.out.print("Password: ");
         String userPassword = input.nextLine();
 
-        user.add(new User(userName, userEmail, userPassword));
+        users.add(new User(userName, userEmail, userPassword));
         //handles checking database
         //if wrong outputs error and head to register
 
@@ -37,12 +45,12 @@ public class Main {
                 //User Profile Creation
                 //Option 1: Student
 
-                student.add(new Student(userName, userEmail, userPassword)); //passes the failed information to this
+                students.add(new Student(userName, userEmail, userPassword)); //passes the failed information to this
                 System.out.println("Please continue create your profile.");
                 System.out.print("Age: ");
                 int userAge = input.nextInt();
                 input.nextLine();
-                String userID = Integer.toString(user.size());
+                String userID = Integer.toString(users.size());
                 System.out.print("ID: " + userID); //created through index of user
                 System.out.print("IC: ");
                 String userIC = input.nextLine();
@@ -51,7 +59,7 @@ public class Main {
                 System.out.print("Programme: ");
                 String studentProgramme = input.nextLine();
 
-                student.add(new Student(userID, userAge, userIC, userDept, studentProgramme));
+                students.add(new Student(userID, userAge, userIC, userDept, studentProgramme));
 
                 // Course Selection and Enrollment
                 System.out.println("Please select a course from the list below.");
@@ -60,15 +68,15 @@ public class Main {
                 System.out.print("Enter your choice: ");
                 choice = input.nextInt();
 
-                ArrayList<Course> course = new ArrayList<>();
+                ArrayList<Course> courses = new ArrayList<>();
                 for (int i = 0; i < 2; i++) {
 
                     switch (choice) {
                         case 1:
-                            course.add(new IntroductionToJava());
+                            courses.add(new IntroductionToJava());
                             break;
                         case 2:
-                            course.add(new DataStructuresAndAlgorithms());
+                            courses.add(new DataStructuresAndAlgorithms());
                             break;
                         default:
                             System.out.println("Invalid choice.");
@@ -77,9 +85,9 @@ public class Main {
 
                 }
 
-                student.add(new Student(course));
+                students.add(new Student(course));
 
-                System.out.println("You have selected the " + course.get(0).getcourseName() + " course and " + course.get(1).getcourseName() + "course");
+                System.out.println("You have selected the " + course.get(0).getCourseName() + " course and " + course.get(1).getCourseName() + "course");
                 System.out.println("Please enroll in the course.");
                 System.out.print("Do you want to use the free trial period? (Y/N): ");
                 String freeTrialChoice = input.next();
@@ -100,12 +108,12 @@ public class Main {
 
                 //Option 2: Lecturer
 
-                lecturer.add(new Lecturer(userName, userEmail, userPassword)); //passes the failed information to this
+                lecturers.add(new Lecturer(userName, userEmail, userPassword)); //passes the failed information to this
                 System.out.println("Please continue create your profile.");
                 System.out.print("Age: ");
                 userAge = input.nextInt();
                 input.nextLine();
-                userID = Integer.toString(user.size());
+                userID = Integer.toString(users.size());
                 System.out.print("ID: " + userID); //created through index of user
                 System.out.print("IC: ");
                 userIC = input.nextLine();
@@ -114,7 +122,7 @@ public class Main {
                 System.out.print("Phone Number: ");
                 String lecturerPhoneNum = input.nextLine();
 
-                lecturer.add(new Lecturer(userID, userAge, userIC, userDept, lecturerPhoneNum));
+                lecturers.add(new Lecturer(userID, userAge, userIC, userDept, lecturerPhoneNum));
 
                 System.out.println("Office Location: ");
                 System.out.print("Block: ");
@@ -125,14 +133,14 @@ public class Main {
                 String r = input.nextLine();
 
                 Office office = new Office(b, l, r);
-                lecturer.add(new Lecturer(office));
+                lecturers.add(new Lecturer(office));
 
                 System.out.println("Lecturer Registration Completed: ");
                 break;
         }
 
             // Course Progress
-            System.out.println("You have successfully enrolled in the " + course.get(0).getcourseName() + " course and " + course.get(1).getcourseName() + "course");
+            System.out.println("You have successfully enrolled in the " + course.get(0).getCourseName() + " course and " + course.get(1).getCourseName() + "course");
             System.out.println("Please access the course materials from the course dashboard.");
             for (int j = 0; j < 2; j++) {
                 while (course.get(j).hasNextModule()) {
@@ -149,7 +157,7 @@ public class Main {
                     currentModule.markAsComplete();
 
                     // Completion Certificate
-                    System.out.println("Congratulations! You have completed the " + course.get(j).getcourseName() + " course.");
+                    System.out.println("Congratulations! You have completed the " + course.get(j).getCourseName() + " course.");
                     System.out.println("Please download your completion certificate from the course dashboard.");
 
                     // Review and Feedback
