@@ -31,19 +31,19 @@ Main- Izam, Saifullah, Azam, Yusuf, Ammar
 
 (sub) Student- 
 
-Semester-
+Semester- Irfan
 
 (sub) Lecturer- Yusuf
 
-Office- Irfan
+Office- Damien
 
-Session-
+Session- Izam
 
 Schedule- Izam
 
 (abstract, super) Course, (sub) IntroToJava, etc: - Izam
 
-Module- Damien
+Module- Izam
 
 JavaFX- Izam, Yusuf
 
