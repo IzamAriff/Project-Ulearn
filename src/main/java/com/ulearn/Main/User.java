@@ -9,6 +9,8 @@ public class User {
     protected String department;
     protected String email;
     protected String password;
+    private int[] uniqueId;
+    private int nextId;
 
     public User(String name, String id, int age, String ic, String department, String email, String password) {
         this.name = name;
@@ -34,7 +36,12 @@ public class User {
     }
 
     public User() {
+        uniqueId = new int[100]; // or any other initial capacity
+        nextId = 0;
+    }
 
+    public User(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -91,5 +98,15 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getUniqueId() {
+        if (nextId >= uniqueId.length) {
+            // array is full, expand it
+            int[] newUniqueId = new int[uniqueId.length * 2];
+            System.arraycopy(uniqueId, 0, newUniqueId, 0, uniqueId.length);
+            uniqueId = newUniqueId;
+        }
+        return uniqueId[nextId++];
     }
 }

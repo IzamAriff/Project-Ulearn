@@ -1,11 +1,13 @@
 package com.ulearn.Main;
 
-public abstract class Course {
+import java.util.ArrayList;
+
+public abstract class Course extends ArrayList<Course> {
 
     //attribute
     protected String courseName;
     protected String courseID;
-    protected Lecturer lecturer; //courseName, office, phoneNum
+    protected String lecturer;
     protected boolean freeTrialAvailable;
     protected double courseFee;
     protected String feedback;
@@ -13,26 +15,38 @@ public abstract class Course {
     protected String description;
 
     //constructor
-    public Course(String courseName, String courseID, Lecturer lecturer, int creditHour, String description) {
+    public Course(String courseName, String courseID, int creditHour, String description) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.creditHour = creditHour;
         this.description = description;
-        this.lecturer = lecturer;
     }
 
-    public Course(String courseName,String courseID, boolean freeTrialAvailable, double courseFee) {
+    public Course(String courseName, String courseID, boolean freeTrialAvailable, double courseFee,
+                  int creditHour, String lecturer, String description) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.freeTrialAvailable = freeTrialAvailable;
         this.courseFee = courseFee;
+        this.creditHour = creditHour;
+        this.lecturer = lecturer;
+        this.description = description;
     }
 
-    public String getcourseName() {
+    public String getCourseName() {
         return courseName;
     }
 
-    public void setcourseName(String courseName) {
+    public String getCourseLecturer() {
+        return lecturer;
+    }
+
+    @Override
+    public String toString() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
 
@@ -91,11 +105,5 @@ public abstract class Course {
 
     public abstract Module getNextModule();
 
-    public void getLectureCourse(String courseName, String courseID, String description) { //courseID is just using the index of the array 
 
-    }
-
-    public void getStudentCourse(String courseName, String courseID, Lecturer lecturer, String creditHour, String description) {
-
-    }
 }

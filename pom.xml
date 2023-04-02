@@ -80,6 +80,26 @@
             <version>1.1.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>lpg.runtime</groupId>
+            <artifactId>java</artifactId>
+            <version>2.0.17-v201004271640</version>
+        </dependency>
+        <dependency>
+            <groupId>com.palantir.conjure.java</groupId>
+            <artifactId>conjure-java-undertow-runtime</artifactId>
+            <version>6.77.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pacificwebconsulting.runtime</groupId>
+            <artifactId>runtime-microservice</artifactId>
+            <version>1.0.70</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.adedayo.intellij.sdk</groupId>
+            <artifactId>java-runtime</artifactId>
+            <version>142.1</version>
+        </dependency>
     </dependencies>
 
 </project>

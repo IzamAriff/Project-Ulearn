@@ -1,13 +1,7 @@
 package com.ulearn.Main;
 
-import com.ulearn.Subjects.DataStructuresAndAlgorithms;
-import com.ulearn.Subjects.IntroductionToJava;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {/*
         Scanner input = new Scanner(System.in);
 
         ArrayList<User> user = new ArrayList<>();
@@ -137,7 +131,6 @@ public class Main {
                 break;
         }/*
 
-
             // Course Progress
             System.out.println("You have successfully enrolled in the " + course.get(0).getcourseName() + " course and " + course.get(1).getcourseName() + "course");
             System.out.println("Please access the course materials from the course dashboard.");
@@ -169,13 +162,13 @@ public class Main {
                     }
                 }
 
-            }*/
+            }
 
 
 
 
 
 
-        input.close();
+        input.close();*/
     }
 }

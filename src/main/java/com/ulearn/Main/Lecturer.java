@@ -1,13 +1,16 @@
 package com.ulearn.Main;
-import com.ulearn.Utility.*;
 
+import com.ulearn.Utility.Session;
+
+import java.util.Date;
 import java.util.Scanner;
 
 public class Lecturer extends User {
     
     private Office office;
-    private Session[] session;
+    private Session[] session = new Session[2];
     private String phoneNum;
+    private Course course;
     
     //constructor: assigning values to attributes
 
@@ -16,8 +19,17 @@ public class Lecturer extends User {
         super(name, email, password);
     }
 
+    public Lecturer(String name) {
+        super(name);
+    }
+
     public Lecturer(String id, int age, String ic, String department, String phoneNum) {
         super(id, age, ic, department);
+        this.phoneNum = phoneNum;
+    }
+
+    public Lecturer(String name, String email, String password, int age, String id,  String ic, String department, String phoneNum) {
+        super(name, id, age, ic, department, email, password);
         this.phoneNum = phoneNum;
     }
 
@@ -26,6 +38,10 @@ public class Lecturer extends User {
     }
 
     public Lecturer() {
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public void setPhoneNum(String phoneNum) {
@@ -48,12 +64,8 @@ public class Lecturer extends User {
         this.session = session;
     }
     
-    public Session[] getSession() {
-        return session;
-    }
-    
     public void createLecturer() {
-        System.out.println("----------Lecturer's Details----------");
+        System.out.println("Lecturer's Details:");
         Lecturer lec = new Lecturer();
         Scanner input = new Scanner(System.in);
 
@@ -94,5 +106,21 @@ public class Lecturer extends User {
         Lecturer lecturer = new Lecturer();
         lecturer.createLecturer();
         lecturer.displayLecturer();
+    }
+
+    public Course getCourses() {
+        return course;
+    }
+
+    public void addSession(String l, Course c, Date d, int i) {
+        session[i] = new Session(l, c, d);
+    }
+
+    public Session[] getSession(int i) {
+        return session;
+    }
+
+    public void deleteSession() {
+        session[0] = null;
     }
 }

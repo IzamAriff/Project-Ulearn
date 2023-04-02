@@ -1,13 +1,16 @@
 package com.ulearn.Subjects;
+
 import com.ulearn.Main.Course;
 import com.ulearn.Main.Module;
 
 public class DataStructuresAndAlgorithms extends Course {
     private Module[] modules;
     private int currentModuleIndex;
+    private static final int uniqueId = 1;
 
     public DataStructuresAndAlgorithms() {
-        super("Data Structures and Algorithms", "CS120" , false, 100.0);
+        super("Data Structures and Algorithms", "CS120" , false, 100.0,
+                4, "Mr. Eric", "About Data Structure: ");
         modules = new Module[5];
         modules[0] = new Module("Introduction to Data Structures");
         modules[1] = new Module("Arrays and Linked Lists");
@@ -31,6 +34,5 @@ public class DataStructuresAndAlgorithms extends Course {
     public Module getNextModule() {
         return null;
     }
-
 
 }

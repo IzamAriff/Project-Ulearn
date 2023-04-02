@@ -1,4 +1,5 @@
 package com.ulearn.Main;
+
 import com.ulearn.Utility.Semester;
 
 import java.util.ArrayList;
@@ -23,6 +24,11 @@ public class Student extends User {
         this.programme = studentProgramme;
     }
 
+    public Student(String name, String email, String password, int age, String id,  String ic, String department, String programme) {
+        super(name, id, age, ic, department, email, password);
+        this.programme = programme;
+    }
+
     public Student(ArrayList<Course> course) {
         this.course = course;
     }
@@ -31,16 +37,20 @@ public class Student extends User {
         super();
     }
 
-
-
-    public static void main(String args[]) {
-    }
     public void setCourse(ArrayList<Course> course) {
         this.course = course;
     }
-
-    public ArrayList<Course> getCourse() {
+    public ArrayList<Course> getCourse(int index) {
+        return course.get(index);
+    }
+    public ArrayList<Course> getEnrolledCourses() {
         return course;
+    }
+
+
+    public String getCourseName(1) {
+
+        return course.getCourseName();
     }
 
     public void setProgramme(String programe) {
@@ -50,4 +60,5 @@ public class Student extends User {
     public String getProgramme() {
         return programme;
     }
+
 }
