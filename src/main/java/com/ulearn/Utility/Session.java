@@ -1,7 +1,11 @@
 package com.ulearn.Utility;
 
+import com.ulearn.Main.Course;
+import com.ulearn.Main.Lecturer;
+import com.ulearn.Main.Student;
+
+import java.time.LocalDate;
 import java.util.Date;
-import com.ulearn.Main.*;
 
 public class Session {
 
@@ -11,12 +15,28 @@ public class Session {
     private Lecturer lecturer;
     private Course course;
     private Date date;
+    private LocalDate d;
+    private String assignmentName;
+    private String assignmentDescription;
 
+    //constructor for creating a session, especially accessible to those of lecturer
     public Session(String scheduleID, String location, Student[] students, Lecturer lecturer, Course course, Date date) {
         this.scheduleID = scheduleID;
         this.location = location;
         Students = students;
         this.lecturer = lecturer;
+        this.course = course;
+        this.date = date;
+    }
+
+    //this is a borrowed constructor, as it is for creating an info for a assignment, and also accessible to those of lecturer
+    public Session(String assignmentName, String assignmentDescription, LocalDate dueDate) {
+        this.assignmentName = assignmentName;
+        this.assignmentDescription = assignmentDescription;
+    }
+
+    public Session(String location, Course course, Date date) {
+        this.location = location;
         this.course = course;
         this.date = date;
     }
@@ -27,6 +47,14 @@ public class Session {
 
     public void setScheduleID(String scheduleID) {
         this.scheduleID = scheduleID;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Student[] getStudents() {
@@ -57,31 +85,11 @@ public class Session {
         return date;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void displayCourseInfo() {
-        System.out.println("Course Info:- ");
-        System.out.println("Course Name: " + course.getCourseName());
-        System.out.println("Course ID: " + course.getCourseID());
-        System.out.println("Lecturer: " + lecturer.getName());
-        System.out.println("Credit Hours: " + course.getCreditHour());
-        System.out.println("Description: " + course.getDescription());
-    }
     public void getSchedule() {
         System.out.println("Class: " + scheduleID);
         System.out.println("Date: " + date);
         System.out.println("Location: " + location);
         System.out.println("Lecturer: " + lecturer.getName());
     }
-    
+
 }
