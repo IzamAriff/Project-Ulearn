@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.*;
 import java.util.*;
 
 public class HelloApplication extends Application {
@@ -37,6 +37,7 @@ public class HelloApplication extends Application {
     private String cName;
     private String lName;
     private int uniqueId = -1;
+    private int sessionId = 0;
 
     @Override
     public void start(Stage stage) {
@@ -307,12 +308,7 @@ public class HelloApplication extends Application {
                     alert.showAndWait();
                 } else {
                     lecturers.add(uniqueId, new Lecturer(name, email, password, age, id, ic, department, phoneNum));
-                    for (Lecturer lecturer: lecturers) {
-                        if (lecturer.getId().equals(id)) {
-                            lecturerDashboard(stage, lecturers, uniqueId);
-                            break;
-                        }
-                    }
+                    lecturerDashboard(stage, lecturers, uniqueId);
                 }
             }
         });
@@ -375,13 +371,13 @@ public class HelloApplication extends Application {
         courseListView.setStyle("-fx-font-size: 16px;");
 
         //System.out.println(students.get(uniqueId).getCourseName());
+        List<Course> studentCourse = new ArrayList<>();
+
+        //studentCourse = students.get(uniqueId).getCourses(1);
 
         // Display the available courses Name in a ListView
-        ObservableList<String> courseList = FXCollections.observableArrayList();
-        for (Course course : students.get(uniqueId).getCourses()) {
-            courseList.add(students.get(uniqueId).getCourseName());
-        }
-        ListView<String> listView = new ListView<>(courseList);
+        ObservableList<Course> courseList = FXCollections.observableArrayList(studentCourse);
+        ListView<Course> listView = new ListView<>(courseList);
         listView.setPrefWidth(400);
 
         Button enrollButton = new Button("Enroll in course");
@@ -419,6 +415,7 @@ public class HelloApplication extends Application {
                 welcomeLabel,
                 dashboardLabel,
                 courseListView,
+                listView,
                 hBox
         );
 
@@ -743,6 +740,15 @@ public class HelloApplication extends Application {
             }
         });
 
+        Button backButton = new Button("Back");
+        backButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;");
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                lecturerDashboard(stage, lecturers, uniqueId);
+            }
+        });
+
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
@@ -750,6 +756,7 @@ public class HelloApplication extends Application {
         gridPane.addRow(1, assignmentDescriptionLabel, assignmentDescriptionTextArea);
         gridPane.addRow(2, assignmentDueDateLabel, dueDatePicker);
         gridPane.add(createButton, 1, 3);
+        gridPane.add(backButton, 2, 3);
 
         vBox.getChildren().addAll(createAssignmentLabel, gridPane);
 
@@ -919,10 +926,14 @@ public class HelloApplication extends Application {
         Label dateLabel = new Label("Date (YYYY-MM-DD):");
         TextField dateTextField = new TextField();
 
+        List<Course> availableCourses = new ArrayList<>();
+        availableCourses.add(new DataStructuresAndAlgorithms());
+        availableCourses.add(new IntroductionToJava());
+
         Label courseLabel = new Label("Course:");
-        ComboBox<Course> courseComboBox = new ComboBox<Course>();
-        courseComboBox.getItems().addAll(lecturers.get(uniqueId).getCourses());
-        courseComboBox.getSelectionModel().selectFirst();
+        ObservableList<Course> courseList = FXCollections.observableArrayList(availableCourses);
+        ChoiceBox<Course> courseChoiceBox = new ChoiceBox<>(courseList);
+        courseChoiceBox.getSelectionModel().selectFirst();
 
         Button addButton = new Button("Add");
         addButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;");
@@ -931,7 +942,7 @@ public class HelloApplication extends Application {
             public void handle(ActionEvent event) {
                 String location = locationTextField.getText();
                 String dateString = dateTextField.getText();
-                Course course = courseComboBox.getValue();
+                Course course = courseChoiceBox.getValue();
 
                 // Parse the date string to a Date object
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -942,7 +953,8 @@ public class HelloApplication extends Application {
                     e.printStackTrace();
                 }
 
-                lecturers.get(uniqueId).addSession(location, course, date, 0);
+                lecturers.get(uniqueId).addSession(location, course, date, sessionId);
+                sessionId++;
 
                 // Show a confirmation dialog
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -963,7 +975,7 @@ public class HelloApplication extends Application {
                 dateLabel,
                 dateTextField,
                 courseLabel,
-                courseComboBox,
+                courseChoiceBox,
                 addButton
         );
 
@@ -994,7 +1006,8 @@ public class HelloApplication extends Application {
             public void handle(ActionEvent event) {
                 Session session = comboBox.getValue();
                 if (session != null) {
-                    lecturers.get(uniqueId).deleteSession();
+                    lecturers.get(uniqueId).deleteSession(session);
+                    sessionId--;
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Success");
                     alert.setHeaderText("Session deleted");
@@ -1013,10 +1026,9 @@ public class HelloApplication extends Application {
 
         vBox.getChildren().addAll(titleLabel, comboBox, deleteButton);
 
-        Scene scene = new Scene(vBox, 400, 400);
+        Scene scene = new Scene(vBox,400, 400);
         stage.setScene(scene);
         stage.show();
     }
-
 
 }
