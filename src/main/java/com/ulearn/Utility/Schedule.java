@@ -1,39 +1,26 @@
 package com.ulearn.Utility;
 
-import com.ulearn.Main.Course;
-import com.ulearn.Main.Lecturer;
-import com.ulearn.Main.Student;
-import java.util.Date;
-
 public class Schedule {
-
-  // attributes
-  private Session[] sessions;
-
-  // constructor
-  public Schedule(Session[] sessions) {
-    this.sessions = sessions;
+  
+  //attribute
+  private Session[] session;
+  
+  //constructor
+  private Schedule(Session[] session) {
+    this.session = new Session[1];
   }
-
-  // getter and setter
-  public Session[] getSessions() {
-    return sessions;
+  
+  //setter and getter
+  public void setSession(Session[] session) {
+    this.session = session;
   }
-
-  public void setSessions(Session[] sessions) {
-    this.sessions = sessions;
+  
+  public Session[] getSession() {
+    return session;
   }
-
-  // method
-  public void viewSchedule() {
-    System.out.println("Schedule:");
-    for (int i = 0; i < sessions.length; i++) {
-      sessions[i].getSchedule();
-      System.out.println("Course:");
-      sessions[i].displayCourseInfo();
-      System.out.println();
-    }
+  
+  //method
+  public void viewSchedule(Session[] session) {
   }
- 
 
 }
