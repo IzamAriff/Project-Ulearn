@@ -2,13 +2,13 @@
 UML DIAGRAM: [ulearn uml.pdf](https://github.com/IzamAriff/Project-Ulearn/blob/main/ulearn%20uml.pdf)
 
 # Contributors:
-1. MUHAMMAD AZAMUDDIN BIN JOHARI (22006743)- Username DrMuddin
-2. AMMAR IRFAN BIN ZALALUDIN (22007034)- Pokpo
-3. DAMIEN LEJU IDRIS (22007158)- Mien
+1. MUHAMMAD AZAMUDDIN BIN JOHARI (22006743)- DrMuddin
+2. AMMAR IRFAN BIN ZALALUDIN (22007034)- Pokpo404
+3. DAMIEN LEJU IDRIS (22007158)- Mien14
 4. MUHAMMAD SAIFULLAH BIN SAZALINSYAH (22006867)- SaifullahSaz
 5. YUSUF WAFIY BIN MOHD NIZAM (22006958)- AyaqNyoq
 6. IZAM BIN MOHD ARIFF (22007541)- IzamAriff
-7. IRFAN DANIAL BIN AHMADI (22007337)
+7. IRFAN DANIAL BIN AHMADI (22007337)- Irfanahmadi
 
 # Project info
 We see many student have problems with finding academic
