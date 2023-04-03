@@ -1,6 +1,6 @@
 # Project-Ulearn
-UML DIAGRAM: [ulearn uml.pdf](https://github.com/IzamAriff/Project-Ulearn/blob/main/ulearn%20uml.pdf)
-Youtube link: [Presentation Video](https://github.com/IzamAriff/Project-Ulearn/blob/main/Youtube%20Link) 
+UML DIAGRAM: [UML OOP Project.pdf](https://github.com/IzamAriff/Project-Ulearn/blob/main/UML%20OOP%20Project.pdf)
+Youtube link: [https://youtu.be/xO1NeQ91Z5k](https://youtu.be/xO1NeQ91Z5k) 
 
 # Contributors:
 1. MUHAMMAD AZAMUDDIN BIN JOHARI (22006743)- DrMuddin
@@ -50,8 +50,7 @@ Module- Izam
 
 JavaFX- Izam, Yusuf
 
-# Youtube
-https://youtu.be/xO1NeQ91Z5k
+
 
 
 
