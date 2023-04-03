@@ -9,17 +9,12 @@ import java.util.Scanner;
 public class Lecturer extends User {
     
     private Office office;
-    private Session[] session = new Session[2];
+    private ArrayList<Session> sessions = new ArrayList<>();
     private String phoneNum;
-    private Course course = new Course();
-
-    private ArrayList<Course> teachingcourse = new ArrayList<>();
+    private ArrayList<Course> course;
     
     //constructor: assigning values to attributes
 
-    public Lecturer(ArrayList<Course> course) {
-        this.teachingcourse = course;
-    }
 
     public Lecturer(String name, String email, String password) {
         super(name, email, password);
@@ -41,10 +36,6 @@ public class Lecturer extends User {
 
     public Lecturer(Office office) {
         this.office = office;
-    }
-
-    public Lecturer(Course course) {
-        this.course = course;
     }
 
     public Lecturer() {
@@ -70,8 +61,8 @@ public class Lecturer extends User {
         return office;
     }
     
-    public void setSession(Session[] session) {
-        this.session = session;
+    public void setSession(ArrayList<Session> session) {
+        this.sessions = session;
     }
     
     public void createLecturer() {
@@ -118,24 +109,20 @@ public class Lecturer extends User {
         lecturer.displayLecturer();
     }
 
-    public void setCourses(Course course) {this.course = course;
-    }
-    public Course getCourses() {
+    public ArrayList<Course> getCourses() {
         return course;
-    }
-    public String getCoursesName() {
-        return course.getCourseName();
     }
 
     public void addSession(String l, Course c, Date d, int i) {
-        session[i] = new Session(l, c, d);
+        sessions.add(i, new Session(l, c, d));
     }
 
-    public Session[] getSession(int i) {
-        return session;
+    public ArrayList<Session> getSession(int i) {
+        return sessions;
     }
 
-    public void deleteSession() {
-        session[0] = null;
+    public void deleteSession(Session session) {
+        sessions.remove(session);
     }
+
 }
