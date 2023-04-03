@@ -1,5 +1,5 @@
 # Project-Ulearn
-UML DIAGRAM: [UML PROJEKT.pdf](https://github.com/IzamAriff/Project-Ulearn/files/10960017/UML.PROJEKT.pdf)
+UML DIAGRAM: [ulearn uml.pdf](https://github.com/IzamAriff/Project-Ulearn/blob/main/ulearn%20uml.pdf)
 
 # Contributors:
 1. MUHAMMAD AZAMUDDIN BIN JOHARI (22006743)
