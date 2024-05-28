@@ -3,13 +3,14 @@ import com.ulearn.Subjects.DataStructuresAndAlgorithms;
 import com.ulearn.Subjects.IntroductionToJava;
 import com.ulearn.Database.*;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Scanner input = new Scanner(System.in);
         final StudentDataAccess STUDENTDB = new StudentDataAccess(DBTool.getConnection());
-        final LecturerDataAccess LECTURERDB = new LecturerDataAccess(DBTool.getConnection())
+        final LecturerDataAccess LECTURERDB = new LecturerDataAccess(DBTool.getConnection());
 
         ArrayList<User> users = new ArrayList<>();
         ArrayList<Student> students = STUDENTDB.getAllStudents();

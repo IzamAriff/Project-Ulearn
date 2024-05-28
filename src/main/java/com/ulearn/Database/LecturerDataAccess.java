@@ -6,7 +6,14 @@ import com.ulearn.Main.Lecturer;
 import com.ulearn.Main.Office;
 
 public class LecturerDataAccess {
-    public static ArrayList<Lecturer> getAllLecturers (Connection con) {
+	private final Connection connection;
+
+	public LecturerDataAccess(Connection connection) { 
+		this.connection = connection;
+	}
+	
+
+	public static ArrayList<Lecturer> getAllLecturers (Connection con) {
 		
         int age;
         String name;
@@ -40,7 +47,7 @@ public class LecturerDataAccess {
 				
 				office = new Office(officeSplit[0], officeSplit[1], officeSplit[2]);
 				
-				Lecturer lecturer = new Lecturer(name, email, password, age, id, ic, department, phoneNum);
+				Lecturer lecturer = new Lecturer(name, email, password, age, ID, IC, department, phoneNum);
 				lecturers.add(lecturer);
 				
 			}
