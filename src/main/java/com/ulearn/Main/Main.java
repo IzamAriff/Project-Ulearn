@@ -140,7 +140,7 @@ public class Main {
 
                 Office office = new Office(b, l, r);
                 lecturers.add(new Lecturer(office));
-                lecturers.add(new Lecturer(courses));
+                //lecturers.add(new Lecturer(courses));
 
                 System.out.println("Lecturer Registration Completed!");
 

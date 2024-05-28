@@ -6,14 +6,14 @@ import com.ulearn.Main.Lecturer;
 import com.ulearn.Main.Office;
 
 public class LecturerDataAccess {
-	private final Connection connection;
+	private Connection connection;
 
 	public LecturerDataAccess(Connection connection) { 
 		this.connection = connection;
 	}
 	
 
-	public static ArrayList<Lecturer> getAllLecturers (Connection con) {
+	public ArrayList<Lecturer> getAllLecturers () throws SQLException {
 		
         int age;
         String name;
@@ -27,27 +27,27 @@ public class LecturerDataAccess {
 
 		
 		try {
-			PreparedStatement stmt = con.prepareStatement("SELECT * FROM Lecturer");			
+			String query = "SELECT * FROM Lecturer";
+			PreparedStatement stmt = connection.prepareStatement(query);
 			ResultSet result = stmt.executeQuery();			
 			ArrayList<Lecturer> lecturers = new ArrayList<Lecturer>();
 			
 			while(result.next()) {
-				
-				name = result.getString("name");
-				ID = result.getString("id");
-				age = result.getInt("age");
-				IC = result.getString("ic");
-                email = result.getString("email");
-                password = result.getString("password");
-                phoneNum = result.getString("phoneNum");
-				department = result.getString("department");
+				Lecturer lecturer = new Lecturer();
+				lecturer.setName(result.getString("name"));
+				lecturer.setId(result.getString("id"));
+				lecturer.setAge(result.getInt("age"));
+				lecturer.setIc(result.getString("ic"));
+                lecturer.setEmail(result.getString("email"));
+                lecturer.setPassword(result.getString("password"));
+                lecturer.setPhoneNum(result.getString("phoneNum"));
+				lecturer.setDepartment(result.getString("department"));
 				String officeStr = result.getString("office");
 				String[] officeSplit;
 				officeSplit = officeStr.split(" ");
 				
 				office = new Office(officeSplit[0], officeSplit[1], officeSplit[2]);
-				
-				Lecturer lecturer = new Lecturer(name, email, password, age, ID, IC, department, phoneNum);
+
 				lecturers.add(lecturer);
 				
 			}
